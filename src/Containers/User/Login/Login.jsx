@@ -1,10 +1,9 @@
 import React, {useEffect} from 'react';
-import './Login.css';
+import './Login.scss';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectDatosUsuario, loginUsuario } from '../userSlice';
 import { useState } from 'react';
-import img3 from '../../../assets/iconoform.png'
 
 const Login = (props) => {
     //hooks

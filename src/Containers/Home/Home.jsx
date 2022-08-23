@@ -1,7 +1,6 @@
 import React from "react"
-import "./Home.css"
+import "./Home.scss"
 import axios from "axios"
-import PeliculasCard from '../../Components/PeliculasCard/PeliculasCard'
 import {useState, useEffect} from 'react'
 
 

@@ -1,6 +1,9 @@
 import './App.css'
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Header from "./Components/Header/Header"
+import Home from './Containers/Home/Home'
+import Register from "./Containers/User/Register/Register"
+import Login from "./Containers/User/Login/Login"
 
 function App() {
 
@@ -10,13 +13,8 @@ function App() {
             <Header/>
               <Routes>
                   <Route path="/" element={<Home/>}/>
-                  <Route path="/movies" element={<List/>}/>
                   <Route path="/register" element={<Register/>}/>
-                  <Route path="/toprated" element={<TopRated/>}/>
                   <Route path="/login" element={<Login/>}/>
-                  <Route path="/profile" element={<Profile/>}/>
-                  <Route path="/admin" element={<Admin/>}/>
-                  <Route path="/filtraralquilerId" element={<FiltrarAlquilerId/>}/>
               </Routes>
             <Footer/>
       </BrowserRouter>

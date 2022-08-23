@@ -1,10 +1,9 @@
 import React from "react"
 import { useEffect, useState } from "react"
-import { Form, Button, Row, Col } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { registerUser, userSelector } from '../userSlice'
 import { useNavigate } from 'react-router-dom'
-import "./Register.css"
+import "./Register.scss"
 
 const Register = props => {
     const dispatch = useDispatch()
