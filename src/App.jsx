@@ -4,6 +4,7 @@ import Header from "./Components/Header/Header"
 import Home from './Containers/Home/Home'
 import Register from "./Containers/User/Register/Register"
 import Login from "./Containers/User/Login/Login"
+import Footer from "./Components/Footer/Footer"
 
 function App() {
 
