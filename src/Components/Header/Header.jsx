@@ -1,6 +1,6 @@
 import React from "react"
 import { NavLink, useNavigate } from 'react-router-dom'
-import "./Header.css"
+import "./Header.scss"
 import {useSelector, useDispatch} from 'react-redux'
 import { selectDatosUsuario } from "../../Containers/User/userSlice"
 import { peliculasFiltradas } from "../../Containers/Home/homeSlice"
