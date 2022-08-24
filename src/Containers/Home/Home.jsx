@@ -4,13 +4,13 @@ import axios from "axios"
 import {useState, useEffect} from 'react'
 
 
-const Home = (props) => {
+const Home = () => {
 
 
-    let [cartelera, setCartelera] = useState([])
+/*     let [cartelera, setCartelera] = useState([])
 
      useEffect(() => {
-         axios.get('https://videoclub-backend.herokuapp.com/peliculas')
+         axios.get('http://127.0.0.1:8000/api/')
          .then(resp => {
             console.log(resp)
             setCartelera(
@@ -26,6 +26,14 @@ const Home = (props) => {
                     <PeliculasCard key={index} data={pelis}/>
                 ))
                 }
+        </div>
+    ) */
+
+    return(
+        <div className="home">
+            <div>
+                <h1>Holabuenas</h1>
+            </div>
         </div>
     )
 }

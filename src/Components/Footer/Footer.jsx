@@ -7,7 +7,6 @@ const Footer = props => {
        
         <div className="footer">
             <div>
-                <img className="logo" src={img}/>
             </div>
             <div>
             HOLA SOY EL FOOTER

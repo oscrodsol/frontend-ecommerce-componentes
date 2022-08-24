@@ -1,14 +1,13 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import './Login.scss';
-import { useNavigate } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import { selectDatosUsuario, loginUsuario } from '../userSlice';
-import { useState } from 'react';
+import {useNavigate} from 'react-router-dom';
+import {useSelector, useDispatch} from 'react-redux';
+import {userSelector, loginUser} from '../userSlice';
 
-const Login = (props) => {
+const Login = props => {
     //hooks
     const [datosLogin, setDatosLogin] = useState ({
-        dni:'', 
+        email:'', 
         password:''
     })  
     const [msgError, setMsgError] = useState("");
@@ -17,7 +16,7 @@ const Login = (props) => {
     let navegador = useNavigate();
     //Dispatch va a ser un metodo necesario de redux que vamos a usar
     const dispatch = useDispatch();
-    const credenciales = useSelector(selectDatosUsuario)
+    const credenciales = useSelector(userSelector)
 
     //Handlers
     const modificaDatosLogin = (e) => {
@@ -30,17 +29,17 @@ const Login = (props) => {
     useEffect (()=>{
         //Comprobamos si tenemos token
         if(credenciales?.token !== ''){
-            navegador("/Profile");
+            navegador("/");
         }
     },[]);
 
     const logeame = () => {
         //Primero compruebo que los campos sean correctos
             //Esta expresión regular ayuda a validar un email
-        if (! /[0-9]{7,8}[A-Z]/g.test(datosLogin.dni) ) {
-            setMsgError('Introduce un dni válido');
+/*         if (! /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/g.test(datosLogin.email) ) {
+            setMsgError('Introduce un email válido');
             return;
-        }
+        } */
             //Esta expresión regular ayuda a validar un password (numero + letras en este caso)
         if(datosLogin.password.length > 2){
             
@@ -53,9 +52,9 @@ const Login = (props) => {
             return;
         }
         //Por si acaso teníamos algo referenciado como error, lo limpiamos
-        setMsgError("");
+        /* setMsgError(""); */
         //Dispatch es el método de redux que ejecuta el reducer
-        dispatch(loginUsuario({dni: datosLogin.dni,
+        dispatch(loginUser({email: datosLogin.email,
             password: datosLogin.password}
         ));
 
@@ -66,16 +65,12 @@ const Login = (props) => {
 
     return(
             <div className="login">
-                <div className='loginDesign'>
                     <h1>Login</h1>
-                    {/* <pre>{JSON.stringify(datosLogin, null,2)}</pre> */}
-                    <input  type='email' name='dni' title='dni' onChange={modificaDatosLogin} lenght='30'/>
-                    <input  type='password'  name='password' title='password' onChange={modificaDatosLogin} lenght='30'/><br></br>
+                     <pre>{JSON.stringify(datosLogin, null,2)}</pre> 
+                    <input  type='email' name='email' title='email' onChange={modificaDatosLogin}/>
+                    <input  type='password'  name='password' title='password' onChange={modificaDatosLogin}/><br></br>
                     <div className="msgError">{msgError}</div>
                     <div className="sendButton" onClick={()=>logeame()}>Login</div><br></br>
-                    <div className="botonregister" to="/register">Si no estas registrado, registrate aqui.<img className="iregister "src={img3} onClick={()=> navegador("/register")}/></div>
-                    
-                </div>
             </div>
     )
 }
