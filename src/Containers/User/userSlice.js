@@ -3,7 +3,7 @@ import axios from 'axios';
 import jwt from 'jwt-decode';
 
 export const userSlice = createSlice({
-    name: 'usuario',
+    name: 'user',
     initialState:{
         token: ""
     },
@@ -16,11 +16,8 @@ export const userSlice = createSlice({
         },
         logout: (state, action) => {
             return{
-                ...state,
-                token: "",
-                user: "",
-                iat: "",
-                exp: ""
+                ...state.initialState
+
             }
         },register: (state, action) => {
             return {
@@ -32,14 +29,14 @@ export const userSlice = createSlice({
     },
 });
 
-export const loginUsuario = (body) => async (dispatch) => {
+export const loginUser = (body) => async (dispatch) => {
     try{
-        const user = await axios.post('https://videoclub-backend.herokuapp.com/usuarios/login',body);
-        let decodificarToken = jwt(user.data.token);
-        console.log(jwt)
+        const user = await axios.post('http://127.0.0.1:8000/api/login',body);
+        let decodeToken = jwt(user.data.token);
+        console.log(jwt(user.data.token))
         if(user.status === 200){
             dispatch(login({
-                ...decodificarToken,
+                ...decodeToken,
                 token: user.data.token
             }))
         }
@@ -48,18 +45,18 @@ export const loginUsuario = (body) => async (dispatch) => {
         console.log(error)
     }
 };
+
 export const logOut = () => (dispatch) => {
     dispatch(logout());
 };
-export const registerUser = (nombre, dni , password, email, telefono) => async (dispatch) => {
+
+export const registerUser = (nick, email, password) => async (dispatch) => {
     try {
-        const user = await axios.post('https://videoclub-backend.herokuapp.com/usuarios/register',
+        const user = await axios.post('http://127.0.0.1:8000/api/register',
         {
-            nombre: nombre,
-            password: password,
-            telefono: telefono,
+            nick: nick,
             email: email,
-            dni: dni
+            password: password
         })
 
         let response = user
@@ -67,13 +64,10 @@ export const registerUser = (nombre, dni , password, email, telefono) => async (
             dispatch(register(response.data))
         } 
     } catch (error) {
-        dispatch(logError(error))
+        console.log(error)
     }
 }
 
-export const {login, logout} = userSlice.actions
-
-export const selectDatosUsuario = (state) => state.usuario
+export const {login, logout, register } = userSlice.actions
 export const userSelector = (state) =>state.user
-
 export default userSlice.reducer;

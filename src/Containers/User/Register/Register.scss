@@ -1,10 +1,35 @@
-.Register{
-    display: flex;
-    justify-content:center;
 
-    
-    background-color: aquamarine;
-    color: black;
+.Register{
+    background-color: darkred;
     height: 100vh;
-    width: 100vw;
+    width: 100vw;   
+}
+
+.registerDesign {
+    color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.sendButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2em;
+    width: 5em;
+    background-color: purple;
+    color: white;
+    margin-top: 1em;
+    border-radius: 1em;
+    cursor:pointer;
+}
+.botonregister{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.msgError{
+    color: red;
 }

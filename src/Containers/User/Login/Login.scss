@@ -1,5 +1,5 @@
 .login{
-    background-color: aquamarine;
+    background-color: darkred;
     height: 100vh;
     width: 100vw;   
 }
@@ -11,7 +11,7 @@
     align-items: center;
     justify-content: center;
 }
-.sendButton {
+.sendButton, .registerButton{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -22,6 +22,10 @@
     margin-top: 1em;
     border-radius: 1em;
     cursor:pointer;
+}
+.registerButton {
+    height: 2em;
+    width: 10em;
 }
 .botonregister{
     display:flex;
