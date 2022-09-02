@@ -1,8 +1,8 @@
 import React from "react"
 import { NavLink, useNavigate } from 'react-router-dom'
 import "./Header.scss"
-import {useSelector, useDispatch} from 'react-redux'
-import {userSelector } from "../../Containers/User/userSlice"
+import { useSelector, useDispatch } from 'react-redux'
+import { userSelector } from "../../Containers/User/userSlice"
 
 const Header = () => {
 
@@ -11,15 +11,27 @@ const Header = () => {
     if (!credentials?.token) {
         return (
             <div className="header">
-                <div className="menu_header">
-                    <NavLink className="navlink" to="/">Inicio</NavLink>
+                
+                <div className="home-search">
+                    <div>
+                        <NavLink className="navlink" to="/">Inicio</NavLink>
+                    </div>
+                    <div className="searchbar">
+                        <NavLink className="navlink" to="/login">Busqueda</NavLink>
+                    </div>
                 </div>
-                <div>
-                    <NavLink className="navlink" to="/login">Al Login</NavLink>
+
+                <div className="personal">
+                    <div>
+                        <NavLink className="navlink" to="/login">Login</NavLink>
+                    </div>
+                    <div>
+                        <NavLink className="navlink" to="/carrito">Carrito</NavLink>
+                    </div>
                 </div>
             </div>
         )
-    }else{
+    } else {
         return (
             <div className="header">
                 <div className="menu_header">
@@ -28,13 +40,13 @@ const Header = () => {
                 </div>
                 <div>
                     <NavLink className="navlink" to="/logout">Bienvenio</NavLink>
-                    
+                    <NavLink className="navlink" to="/carrito">Carrito</NavLink>
                 </div>
             </div>
         )
     }
 
-    
+
 }
 
 export default Header
