@@ -33,7 +33,7 @@ const Login = props => {
         }
     },[]);
 
-    const logeame = () => {
+    const logIn = () => {
         //Primero compruebo que los campos sean correctos
             //Esta expresión regular ayuda a validar un email
 /*         if (! /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/g.test(datosLogin.email) ) {
@@ -70,7 +70,8 @@ const Login = props => {
                     <input  type='email' name='email' title='email' onChange={modificaDatosLogin}/>
                     <input  type='password'  name='password' title='password' onChange={modificaDatosLogin}/><br></br>
                     <div className="msgError">{msgError}</div>
-                    <div className="sendButton" onClick={()=>logeame()}>Login</div><br></br>
+                    <div className="sendButton" onClick={()=>logIn()}>Login</div><br></br>
+                    <div className="registerButton" to="/register" onClick={()=> navegador("/register")}>Registrate colega</div>
             </div>
     )
 }

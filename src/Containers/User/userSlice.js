@@ -19,6 +19,12 @@ export const userSlice = createSlice({
                 ...state.initialState
 
             }
+        },register: (state, action) => {
+            return {
+                ...state,
+                isRegister: true,
+                successMessage: 'Te has registrado correctamente'
+            }
         }
     },
 });
@@ -40,6 +46,28 @@ export const loginUser = (body) => async (dispatch) => {
     }
 };
 
-export const {login, logout } = userSlice.actions
+export const logOut = () => (dispatch) => {
+    dispatch(logout());
+};
+
+export const registerUser = (nick, email, password) => async (dispatch) => {
+    try {
+        const user = await axios.post('http://127.0.0.1:8000/api/register',
+        {
+            nick: nick,
+            email: email,
+            password: password
+        })
+
+        let response = user
+        if(response.status === 200){
+            dispatch(register(response.data))
+        } 
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const {login, logout, register } = userSlice.actions
 export const userSelector = (state) =>state.user
 export default userSlice.reducer;

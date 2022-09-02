@@ -13,7 +13,6 @@ const Header = () => {
             <div className="header">
                 <div className="menu_header">
                     <NavLink className="navlink" to="/">Inicio</NavLink>
-                    <NavLink className="navlink" to="/toprated">Hola</NavLink>
                 </div>
                 <div>
                     <NavLink className="navlink" to="/login">Al Login</NavLink>
@@ -25,7 +24,7 @@ const Header = () => {
             <div className="header">
                 <div className="menu_header">
                     <NavLink className="navlink" to="/">Inicio</NavLink>
-                    <NavLink className="navlink" to="/toprated">Hola</NavLink>
+                    <NavLink className="navlink" to="/profile">Tu perfil</NavLink>
                 </div>
                 <div>
                     <NavLink className="navlink" to="/logout">Bienvenio</NavLink>
