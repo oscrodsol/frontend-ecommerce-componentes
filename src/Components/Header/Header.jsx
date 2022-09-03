@@ -11,11 +11,23 @@ const Header = () => {
     if (!credentials?.token) {
         return (
             <div className="header">
-                <div className="menu_header">
-                    <NavLink className="navlink" to="/">Inicio</NavLink>
+                
+                <div className="home-search">
+                    <div>
+                        <NavLink className="navlink" to="/">Inicio</NavLink>
+                    </div>
+                    <div className="searchbar">
+                        <NavLink className="navlink" to="/login">Busqueda</NavLink>
+                    </div>
                 </div>
-                <div>
-                    <NavLink className="navlink" to="/login">Al Login</NavLink>
+
+                <div className="personal">
+                    <div>
+                        <NavLink className="navlink" to="/login">Login</NavLink>
+                    </div>
+                    <div>
+                        <NavLink className="navlink" to="/carrito">Carrito</NavLink>
+                    </div>
                 </div>
             </div>
         )
