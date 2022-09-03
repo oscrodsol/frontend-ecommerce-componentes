@@ -1,27 +1,42 @@
 import React from "react"
 import "./Profile.scss"
 import { useSelector, useDispatch } from 'react-redux';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react'
 import { logOut, userSelector, login } from '../../containers/User/userSlice'
 import { useNavigate } from 'react-router-dom'
+import axios from "axios"
 
 
-const Profile = props => {
+const Profile = (props) => {
 
-    const credenciales = useSelector(userSelector)
-    const dispatch = useDispatch()
-    const navegador = useNavigate()
+    let [user, setUser] = useState([])
+    const token = useSelector(userSelector);
 
-    console.log(credenciales.user);
+    const config = {
+        headers: {
+            "Authorization": `Bearer ${token.token}`
+        }
+    }
+    useEffect(() => {
+        axios.get('http://127.0.0.1:8000/api/profile', config)
+            .then(resp => {
+                console.log(resp.data)
+                console.log(user)
+                setUser(
+                    resp.data
+                )
+            })
+    }, [])
     return (
         <div className="profile">
-            <p>Hola perfil</p>
-            <p>Nombre:{/* credenciales.user.nombre */}</p><br></br>
-            <p>DNI:{/* credenciales.user.dni */}</p><br></br>
-            <p>E-mail:{/* credenciales.user.email */}</p><br></br>
-            <p>Telefono:{/* credenciales.user.telefono */}</p>
+            <p>Hola {user.nick}</p><br></br>
+            <p>Nombre:{user.name}</p>
+            <p>Apellidos:{user.surname}</p>
+            <p>DNI:{user.id}</p>
+            <p>E-mail:{user.email}</p>
+            <p>Telefono:{user.phone}</p>
 
-          {  <div>
+            {<div>
                 <div className="sendButton" onClick={() => {
                     navegador("/")
                     localStorage.clear()
