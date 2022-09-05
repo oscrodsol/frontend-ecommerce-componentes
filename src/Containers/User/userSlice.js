@@ -16,7 +16,12 @@ export const userSlice = createSlice({
         },
         logout: (state, action) => {
             return {
-                ...state.initialState
+                /* ...state.initialState */
+                ...state,
+                token: "",
+                user: "",
+                iat: "",
+                exp: ""
 
             }
         }, register: (state, action) => {
@@ -46,7 +51,7 @@ export const loginUser = (body) => async (dispatch) => {
     }
 };
 
-export const logOut = () => async (dispatch) => {
+/* export const logOut = () => async (dispatch) => {
     try {
         await axios.post('http://127.0.0.1:8000/api/logout');
         if (response.status === 200) {
@@ -56,6 +61,10 @@ export const logOut = () => async (dispatch) => {
         console.log(error)
     }
 
+}; */
+
+export const logOut = () => (dispatch) => {
+    dispatch(logout());
 };
 
 export const registerUser = (nick, email, password) => async (dispatch) => {
@@ -75,6 +84,8 @@ export const registerUser = (nick, email, password) => async (dispatch) => {
         console.log(error)
     }
 }
+
+
 
 
 

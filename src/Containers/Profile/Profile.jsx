@@ -11,6 +11,20 @@ const Profile = (props) => {
 
     let [user, setUser] = useState([])
     const token = useSelector(userSelector);
+    const navegador = useNavigate()
+    const dispatch = useDispatch();
+
+    const delLog = () => async (dispatch) => {
+        try {
+            await axios.post('http://127.0.0.1:8000/api/logout',config);
+            if (response.status === 200) {
+                dispatch(logout());
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    
+    };
 
     const config = {
         headers: {
@@ -38,10 +52,12 @@ const Profile = (props) => {
 
             {<div>
                 <div className="sendButton" onClick={() => {
-                    navegador("/")
-                    localStorage.clear()
+                    /* navegador("/") */
+                    delLog()
                     dispatch(logOut())
+                    localStorage.clear()
                     navegador("/")
+                    
                 }}>Logout</div><br></br>
             </div>}
         </div>
