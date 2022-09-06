@@ -4,10 +4,10 @@ import jwt from 'jwt-decode';
 
 export const userSlice = createSlice({
     name: 'user',
-    initialState:{
+    initialState: {
         token: ""
     },
-    reducers:{
+    reducers: {
         login: (state, action) => {
             return {
                 ...state,
@@ -15,11 +15,16 @@ export const userSlice = createSlice({
             }
         },
         logout: (state, action) => {
-            return{
-                ...state.initialState
+            return {
+                /* ...state.initialState */
+                ...state,
+                token: "",
+                user: "",
+                iat: "",
+                exp: ""
 
             }
-        },register: (state, action) => {
+        }, register: (state, action) => {
             return {
                 ...state,
                 isRegister: true,
@@ -30,21 +35,33 @@ export const userSlice = createSlice({
 });
 
 export const loginUser = (body) => async (dispatch) => {
-    try{
-        const user = await axios.post('http://127.0.0.1:8000/api/login',body);
+    try {
+        const user = await axios.post('http://127.0.0.1:8000/api/login', body);
         let decodeToken = jwt(user.data.token);
         console.log(jwt(user.data.token))
-        if(user.status === 200){
+        if (user.status === 200) {
             dispatch(login({
                 ...decodeToken,
                 token: user.data.token
             }))
         }
 
-    }catch (error){
+    } catch (error) {
         console.log(error)
     }
 };
+
+/* export const logOut = () => async (dispatch) => {
+    try {
+        await axios.post('http://127.0.0.1:8000/api/logout');
+        if (response.status === 200) {
+            dispatch(logout());
+        }
+    } catch (error) {
+        console.log(error)
+    }
+
+}; */
 
 export const logOut = () => (dispatch) => {
     dispatch(logout());
@@ -53,21 +70,25 @@ export const logOut = () => (dispatch) => {
 export const registerUser = (nick, email, password) => async (dispatch) => {
     try {
         const user = await axios.post('http://127.0.0.1:8000/api/register',
-        {
-            nick: nick,
-            email: email,
-            password: password
-        })
+            {
+                nick: nick,
+                email: email,
+                password: password
+            })
 
         let response = user
-        if(response.status === 200){
+        if (response.status === 200) {
             dispatch(register(response.data))
-        } 
+        }
     } catch (error) {
         console.log(error)
     }
 }
 
-export const {login, logout, register } = userSlice.actions
-export const userSelector = (state) =>state.user
+
+
+
+
+export const { login, logout, register } = userSlice.actions
+export const userSelector = (state) => state.user
 export default userSlice.reducer;
