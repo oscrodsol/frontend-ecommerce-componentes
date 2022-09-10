@@ -51,18 +51,6 @@ export const loginUser = (body) => async (dispatch) => {
     }
 };
 
-/* export const logOut = () => async (dispatch) => {
-    try {
-        await axios.post('http://127.0.0.1:8000/api/logout');
-        if (response.status === 200) {
-            dispatch(logout());
-        }
-    } catch (error) {
-        console.log(error)
-    }
-
-}; */
-
 export const logOut = () => (dispatch) => {
     dispatch(logout());
 };
@@ -84,10 +72,6 @@ export const registerUser = (nick, email, password) => async (dispatch) => {
         console.log(error)
     }
 }
-
-
-
-
 
 export const { login, logout, register } = userSlice.actions
 export const userSelector = (state) => state.user

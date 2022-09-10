@@ -1,39 +1,32 @@
 import React from "react"
 import "./Home.scss"
 import axios from "axios"
+import ProductCard from '../../Components/ProductCard/ProductCard'
 import {useState, useEffect} from 'react'
 
 
-const Home = () => {
+const Home = (props) => {
 
 
-/*     let [cartelera, setCartelera] = useState([])
+    let [components, setComponents] = useState([])
 
      useEffect(() => {
-         axios.get('http://127.0.0.1:8000/api/')
+         axios.get('http://127.0.0.1:8000/api/get_all_products')
          .then(resp => {
             console.log(resp)
-            setCartelera(
+            setComponents(
                resp.data
             )
         })
     },[])
-
+    console.log(components)
     return (
         <div className="home">
                 {
-                cartelera.map((pelis, index) => (
-                    <PeliculasCard key={index} data={pelis}/>
+                components.data?.map((products, index) => (
+                    <ProductCard key={index} data={products}/>
                 ))
                 }
-        </div>
-    ) */
-
-    return(
-        <div className="home">
-            <div>
-                <h1>Holabuenas</h1>
-            </div>
         </div>
     )
 }
