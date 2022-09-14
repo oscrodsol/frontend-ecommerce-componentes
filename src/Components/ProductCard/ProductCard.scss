@@ -1,0 +1,13 @@
+.ProductCard{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 2em;
+    width: 20em;
+    height: 30em;
+}
+
+.ProductCard:hover{
+    background: linear-gradient(white, grey 90%);
+}

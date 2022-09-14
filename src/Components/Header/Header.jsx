@@ -26,7 +26,7 @@ const Header = () => {
                         <NavLink className="navlink" to="/login">Login</NavLink>
                     </div>
                     <div>
-                        <NavLink className="navlink" to="/carrito">Carrito</NavLink>
+                        <NavLink className="navlink" to="/shopping_cart">Carrito</NavLink>
                     </div>
                 </div>
             </div>
@@ -40,7 +40,7 @@ const Header = () => {
                 </div>
                 <div>
                     <NavLink className="navlink" to="/logout">Bienvenio</NavLink>
-                    <NavLink className="navlink" to="/carrito">Carrito</NavLink>
+                    <NavLink className="navlink" to="/shopping_cart">Carrito</NavLink>
                 </div>
             </div>
         )

@@ -12,6 +12,7 @@ export const cartSlice = createSlice({
     }
 })
 
+
 export const {addToCart} = cartSlice.actions
 
 export const selectCart = (state) => state.cart.cart
