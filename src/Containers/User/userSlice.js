@@ -5,7 +5,8 @@ import jwt from 'jwt-decode';
 export const userSlice = createSlice({
     name: 'user',
     initialState: {
-        token: ""
+        token: "",
+        data: []
     },
     reducers: {
         login: (state, action) => {
@@ -22,9 +23,16 @@ export const userSlice = createSlice({
                 user: "",
                 iat: "",
                 exp: ""
-
             }
-        }, register: (state, action) => {
+        },
+        profile: (state, action) => {
+            return{
+                ...state,
+                ...action.payload
+            }
+            
+        }, 
+        register: (state, action) => {
             return {
                 ...state,
                 isRegister: true,
@@ -73,6 +81,21 @@ export const registerUser = (nick, email, password) => async (dispatch) => {
     }
 }
 
-export const { login, logout, register } = userSlice.actions
+export const userProfile = (token) => async (dispatch) => {
+    const config = {
+        headers: {"Authorization": `Bearer ${token}`}
+    }
+    try {
+        const user =await axios.get("http://localhost:8000/api/profile",config)
+        dispatch(profile({
+            ...user.data
+            
+        }))
+    } catch (error) {
+        dispatch(logError(error));
+    }
+}
+
+export const { login, logout, register, profile } = userSlice.actions
 export const userSelector = (state) => state.user
 export default userSlice.reducer;

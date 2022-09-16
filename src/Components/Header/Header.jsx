@@ -1,12 +1,19 @@
-import React from "react"
+
+import React, {useEffect, useState } from "react";
 import { NavLink, useNavigate } from 'react-router-dom'
 import "./Header.scss"
-import { useSelector, useDispatch } from 'react-redux'
-import { userSelector } from "../../Containers/User/userSlice"
+import { useSelector, useDispatch} from 'react-redux'
+import { userSelector, userProfile } from "../../Containers/User/userSlice"
 
 const Header = () => {
 
+    const dispatch = useDispatch();
     const credentials = useSelector(userSelector);
+
+    useEffect(() => {
+        dispatch(userProfile(credentials.token))
+
+    }, [credentials.token])
 
     if (!credentials?.token) {
         return (
@@ -44,7 +51,7 @@ const Header = () => {
                 </div>
                 <div className="personal">
                     <div>
-                        <NavLink className="navlink" to="/logout">Bienvenido</NavLink>
+                        <NavLink className="navlink" to="/logout">Bienvenido {credentials.nick}</NavLink>
                     </div>
                     <div>
                         <NavLink className="navlink" to="/shopping_cart">Carrito</NavLink>
