@@ -36,7 +36,7 @@ const Register = props => {
             return;
         }
 
-        if (register.password.length > 1) {
+        if (register.password.length > 3) {
             if (! /[\d()+-]/g.test(register.password)) {
                 setRegister({
                     ...register,
@@ -66,43 +66,20 @@ const Register = props => {
     }
 
     return (
-        <div className="Register justify-content-md-center">
-                <h1>Registro</h1>
+        <div className="Register">
+                <h1>Crear cuenta</h1>
                 <br></br>
-                <div className="register">
-                <pre>{JSON.stringify(register, null,2)}</pre> 
-                    <input  type='nick' name='nick' title='nick' onChange={handleInput}/>
-                    <input  type='email' name='email' title='email' onChange={handleInput}/>
-                    <input  type='password'  name='password' title='password' onChange={handleInput}/><br></br>
+                <div className="registerForm">
+                {/* <pre>{JSON.stringify(register, null,2)}</pre>  */}
+                    <h3>Escoge tu Nick</h3>
+                    <input className="nick" type='nick' name='nick' title='nick' onChange={handleInput}/>
+                    <h3>Escribe tu email</h3>
+                    <input className="email" type='email' name='email' title='email' onChange={handleInput}/>
+                    <h3>Introduce tu contraseña</h3>
+                    <input className="password" type='password'  name='password' title='password' onChange={handleInput}/><br></br>
                     <div className="msgError">{msgError}</div>
-                    <div className="sendButton" onClick={()=>userRegister()}>Register</div><br></br>
+                    <div className="sendButton" onClick={()=>userRegister()}>Registrarse</div><br></br>
                     </div>
-                 {/* <pre>{JSON.stringify(register, null,5)}</pre> */} 
-{/*                 <Form onSubmit={userRegister}>
-                    <Form.Group className="mb-3" controlId="formBasicPassword">
-                        <Form.Label>Nombre</Form.Label>
-                        <Form.Control type="text" name="nombre" onChange={handleInput} />
-                    </Form.Group>
-                    <Form.Group className="mb-3" controlId="formBasicPassword">
-                        <Form.Label>DNI</Form.Label>
-                        <Form.Control type="text" name="dni" onChange={handleInput} />
-                    </Form.Group>
-                    <Form.Group className="mb-3" controlId="formBasicPassword">
-                        <Form.Label>Contraseña</Form.Label>
-                        <Form.Control type="password" name="password" onChange={handleInput} />
-                    </Form.Group>
-                    <Form.Group className="mb-3" controlId="formBasicEmail">
-                        <Form.Label>Email</Form.Label>
-                        <Form.Control type="email" name="email" onChange={handleInput} />
-                    </Form.Group>
-                    <Form.Group className="mb-3" controlId="formBasicPassword">
-                        <Form.Label>Teléfono</Form.Label>
-                        <Form.Control type="text" name="telefono" onChange={handleInput} />
-                    </Form.Group>
-                    <Button variant="primary" type="submit">
-                        Registrarse
-                    </Button>
-                </Form> */}
                 {/*ponerme el error bonito!*/}
 {/*                 <p>{msgError}</p>
                 <p>{msgError ? msgError : userData.successMessage}</p> */}

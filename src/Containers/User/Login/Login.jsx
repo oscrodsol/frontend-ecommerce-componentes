@@ -67,12 +67,14 @@ const Login = props => {
             <div className="login">
                     <h1>Iniciar Sesion</h1>
                      {/* <pre>{JSON.stringify(datosLogin, null,2)}</pre> */} 
+                     <h3>Escribe tu email</h3>
                     <input className="email" type='email' name='email' title='email' onChange={modificaDatosLogin}/>
+                    <h3>Introduce tu contraseña</h3>
                     <input className="password" type='password'  name='password' title='password' onChange={modificaDatosLogin}/><br></br>
                     <div className="msgError">{msgError}</div>
                     <div className="sendButton" onClick={()=>logIn()}>Login</div><br></br>
                     <h3>¿Aun no estas registrado?</h3>
-                    <div className="registerButton" to="/register" onClick={()=> navegador("/register")}>Registrate colega</div>
+                    <div className="registerButton" to="/register" onClick={()=> navegador("/register")}>Registrate</div>
             </div>
     )
 }
