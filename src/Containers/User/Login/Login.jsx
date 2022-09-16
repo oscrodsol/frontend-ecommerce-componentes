@@ -36,10 +36,10 @@ const Login = props => {
     const logIn = () => {
         //Primero compruebo que los campos sean correctos
             //Esta expresión regular ayuda a validar un email
-/*         if (! /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/g.test(datosLogin.email) ) {
+         if (! /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/g.test(datosLogin.email) ) {
             setMsgError('Introduce un email válido');
             return;
-        } */
+        } 
             //Esta expresión regular ayuda a validar un password (numero + letras en este caso)
         if(datosLogin.password.length > 2){
             
@@ -65,12 +65,13 @@ const Login = props => {
 
     return(
             <div className="login">
-                    <h1>Login</h1>
-                     <pre>{JSON.stringify(datosLogin, null,2)}</pre> 
-                    <input  type='email' name='email' title='email' onChange={modificaDatosLogin}/>
-                    <input  type='password'  name='password' title='password' onChange={modificaDatosLogin}/><br></br>
+                    <h1>Iniciar Sesion</h1>
+                     {/* <pre>{JSON.stringify(datosLogin, null,2)}</pre> */} 
+                    <input className="email" type='email' name='email' title='email' onChange={modificaDatosLogin}/>
+                    <input className="password" type='password'  name='password' title='password' onChange={modificaDatosLogin}/><br></br>
                     <div className="msgError">{msgError}</div>
                     <div className="sendButton" onClick={()=>logIn()}>Login</div><br></br>
+                    <h3>¿Aun no estas registrado?</h3>
                     <div className="registerButton" to="/register" onClick={()=> navegador("/register")}>Registrate colega</div>
             </div>
     )
