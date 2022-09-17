@@ -12,20 +12,11 @@ const Home = (props) => {
 
     let [components, setComponents] = useState([])
 
-/*      useEffect(() => {
-         axios.get('http://127.0.0.1:8000/api/get_all_products')
-         .then(resp => {
-            console.log(resp)
-            setComponents(
-               resp.data
-            )
-        })
-    },[]) */
     useEffect(() => {
         dispatch(addProducts([
         axios.get('http://127.0.0.1:8000/api/get_all_products')
         .then(resp => {
-           console.log(resp)
+           /* console.log(resp) */
            setComponents(
               resp.data
            )
@@ -33,7 +24,7 @@ const Home = (props) => {
     ]))
    },[])
     
-    console.log(components)
+    /* console.log(components) */
     return (
         <div className="home">
                 {

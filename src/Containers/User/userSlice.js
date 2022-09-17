@@ -17,12 +17,9 @@ export const userSlice = createSlice({
         },
         logout: (state, action) => {
             return {
-                /* ...state.initialState */
                 ...state,
                 token: "",
-                user: "",
-                iat: "",
-                exp: ""
+                data:[]
             }
         },
         profile: (state, action) => {
@@ -30,13 +27,19 @@ export const userSlice = createSlice({
                 ...state,
                 ...action.payload
             }
-            
         }, 
         register: (state, action) => {
             return {
                 ...state,
                 isRegister: true,
                 successMessage: 'Te has registrado correctamente'
+            }
+        },
+        modify: (state, action) => {
+            return {
+                ...state,
+                isRegister: true,
+                successMessage: 'Has modificado los datos correctamente'
             }
         }
     },
@@ -79,14 +82,38 @@ export const registerUser = (nick, email, password) => async (dispatch) => {
     } catch (error) {
         console.log(error)
     }
-}
+};
+
+export const modifyUser = (token, nick, name, surname, password, phone) => async (dispatch) => {
+    const config = {
+        headers: {"Authorization": `Bearer ${token}`}
+    }
+
+    try {
+        const user = await axios.put('http://127.0.0.1:8000/api/modify', config,
+            {
+                nick: nick,
+                name: name,
+                surname: surname,
+                password: password,
+                phone: phone
+            })
+
+        let response = user
+        if (response.status === 200) {
+            dispatch(modify(response.data))
+        }
+    } catch (error) {
+        console.log(error);
+    }
+};
 
 export const userProfile = (token) => async (dispatch) => {
     const config = {
         headers: {"Authorization": `Bearer ${token}`}
     }
     try {
-        const user =await axios.get("http://localhost:8000/api/profile",config)
+        const user = await axios.get("http://localhost:8000/api/profile",config)
         dispatch(profile({
             ...user.data
             
@@ -96,6 +123,6 @@ export const userProfile = (token) => async (dispatch) => {
     }
 }
 
-export const { login, logout, register, profile } = userSlice.actions
+export const { login, logout, register, profile, modify } = userSlice.actions
 export const userSelector = (state) => state.user
 export default userSlice.reducer;
