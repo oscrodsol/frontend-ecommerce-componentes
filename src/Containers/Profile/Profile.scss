@@ -23,10 +23,14 @@
     background-color: white;
     color: black;
     border-radius: 0.2em;
-    cursor:pointer;
 }
 .sendButton{
     height: 2.5em;
     width: 27.2em;
     margin-top: 1em;
+    cursor:pointer;
+}
+
+#logout{
+    margin-left: -0.5em;
 }

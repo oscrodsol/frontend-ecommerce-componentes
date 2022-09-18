@@ -11,14 +11,16 @@ const Cart = props => {
     return (
         <div className="Cart">
             <h1>Carrito</h1>
+
+            <div className="carrito">
+                {
+                    cart?.map((product, index) => (
+                        <ProductCard key={index} data={product} btn="0" />
+                    ))
+                }
+            </div>
             {props.btn != '0' &&
-                <button className="addBtn" onClick={()=>{dispatch(removeFromCart(props.data))}}>Limpiar carrito</button>
-            }
-            {
-                cart?.map((product, index) => (
-                    <ProductCard key={index} data={product} btn="0" />
-    
-                ))
+                <button className="addBtn" onClick={() => { dispatch(removeFromCart()) }}>Limpiar carrito</button>
             }
         </div>
     )

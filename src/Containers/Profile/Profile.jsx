@@ -6,7 +6,6 @@ import { logOut, userSelector, login, modifyUser } from '../../containers/User/u
 import { useNavigate } from 'react-router-dom'
 import axios from "axios"
 
-
 const Profile = (props) => {
 
     let [user, setUser] = useState([])
@@ -48,15 +47,13 @@ const Profile = (props) => {
     useEffect(() => {
         axios.get('http://127.0.0.1:8000/api/profile', config)
             .then(resp => {
-                console.log(resp.data)
-                console.log(user)
                 setUser(
                     resp.data
                 )
             })
     }, [])
 
-    const userModify = (event) => {
+    const userModify = () => async (dispatch) => {
 
         if (modify.password.length > 3) {
             if (! /[\d()+-]/g.test(modify.password)) {
@@ -83,7 +80,14 @@ const Profile = (props) => {
             errorMsg: ''
         });
 
-        dispatch(modifyUser(modify.nick, modify.name, modify.surname, modify.password, modify.phone))
+        try {
+            await axios.put('http://127.0.0.1:8000/api/modify', config);
+            if (response.status === 200) {
+                dispatch(modifyUser(modify.nick, modify.name, modify.surname, modify.password, modify.phone));
+            }
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     return (
@@ -120,7 +124,7 @@ const Profile = (props) => {
             </div>
 
             {<div>
-                <div className="sendButton" onClick={() => {
+                <div className="sendButton" id='logout' onClick={() => {
                     delLog()
                     dispatch(logOut())
                     localStorage.clear()

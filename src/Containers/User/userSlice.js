@@ -90,14 +90,14 @@ export const modifyUser = (token, nick, name, surname, password, phone) => async
     }
 
     try {
-        const user = await axios.put('http://127.0.0.1:8000/api/modify', config,
+        const user = await axios.put('http://127.0.0.1:8000/api/modify',
             {
                 nick: nick,
                 name: name,
                 surname: surname,
                 password: password,
                 phone: phone
-            })
+            }, config)
 
         let response = user
         if (response.status === 200) {
