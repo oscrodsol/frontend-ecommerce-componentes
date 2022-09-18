@@ -1,44 +1,37 @@
 .login{
-    background-color: darkred;
-    height: 100vh;
+    background-color: white;
+    min-height: 90vh;
+    height: fit-content;
     width: 100vw;   
-}
-
-.loginDesign {
     color: black;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
 }
-.sendButton, .registerButton{
+
+.input{
+    height: 2.5em;
+    width: 32em;
+    margin-top: 1em;
+    background-color: white;
+    color: black;
+    border-radius: 0.2em;
+}
+
+.sendButton{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 2em;
-    width: 5em;
-    background-color: purple;
+    height: 2.5em;
+    width: 25.5em;
+    background-color: darkred;
     color: white;
     margin-top: 1em;
-    border-radius: 1em;
+    border-radius: 0.2em;
     cursor:pointer;
 }
-.registerButton {
-    height: 2em;
-    width: 10em;
-}
-.botonregister{
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
+
 .msgError{
     color: red;
 }
-.iregister{
-    height: 3em;
-    width: 3em;
-    cursor: pointer;
-    margin-top: 1em;
-}
+
