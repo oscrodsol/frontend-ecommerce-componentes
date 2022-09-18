@@ -1,4 +1,4 @@
-.login{
+.profile{
     background-color: white;
     min-height: 90vh;
     height: fit-content;
@@ -9,6 +9,13 @@
     align-items: center;
 }
 
+.cuenta,.direcciones,.facturacion,.pedidos{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 28em;
+}
+
 .input{
     height: 2.5em;
     width: 32em;
@@ -17,21 +24,13 @@
     color: black;
     border-radius: 0.2em;
 }
-
 .sendButton{
-    display: flex;
-    justify-content: center;
-    align-items: center;
     height: 2.5em;
-    width: 25.5em;
-    background-color: darkred;
-    color: white;
+    width: 27.2em;
     margin-top: 1em;
-    border-radius: 0.2em;
     cursor:pointer;
 }
 
-.msgError{
-    color: red;
+#logout{
+    margin-left: -0.5em;
 }
-
