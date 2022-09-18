@@ -49,7 +49,6 @@ export const loginUser = (body) => async (dispatch) => {
     try {
         const user = await axios.post('http://127.0.0.1:8000/api/login', body);
         let decodeToken = jwt(user.data.token);
-        console.log(jwt(user.data.token))
         if (user.status === 200) {
             dispatch(login({
                 ...decodeToken,

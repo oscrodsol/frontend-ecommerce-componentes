@@ -53,7 +53,7 @@ const Profile = (props) => {
             })
     }, [])
 
-    const userModify = () => async (dispatch) => {
+    const userModify = () => async (req, res) => {
 
         if (modify.password.length > 3) {
             if (! /[\d()+-]/g.test(modify.password)) {
@@ -80,14 +80,12 @@ const Profile = (props) => {
             errorMsg: ''
         });
 
-        try {
-            await axios.put('http://127.0.0.1:8000/api/modify', config);
-            if (response.status === 200) {
-                dispatch(modifyUser(modify.nick, modify.name, modify.surname, modify.password, modify.phone));
-            }
-        } catch (error) {
-            console.log(error)
-        }
+        await axios.put('http://127.0.0.1:8000/api/modify', { nick: modify.nick, name: modify.name, surname: modify.surname, password: modify.password, phone: modify.phone }, config).then(res => {
+            setMsg({
+                txt: 'Usuario actualizado correctamente'
+            })}).catch(err => {
+            console.log(err)
+        });
     }
 
     return (
