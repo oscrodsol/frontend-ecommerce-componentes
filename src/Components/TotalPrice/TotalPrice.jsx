@@ -8,22 +8,23 @@ const TotalPrice = props => {
 
     console.log(props);
 
-    let totalprice = 0;
+    let baseprice = 0;
 
-/*     for (let index = 0; index <= props.data.length; index++) {
-        totalprice += parseFloat(props.data[index].price);
-        console.log(totalprice);
-        console.log(props.data[index].price);
-    } */
+    for (let index = 0; index < props.data.length; index++) {
+        baseprice += parseFloat(props.data[index].price);
+    }
+
+    let iva = (Math.floor(((21*baseprice)/100) * 100) / 100);
+    let totalprice = (Math.floor((baseprice + iva) * 100) / 100);
 
     return (
         <div className="TotalPrice">
             <div className="product">
-                <br></br><img className="image" src={props.data.image}></img><br></br>
-                <strong>Precio:</strong> {totalprice} <br></br>
-                {props.btn != '0' &&
-                    <button className="addBtn" onClick={() => { dispatch(addToCart(props.data)) }}>Continuar</button>
-                }
+                <h2>Resumen</h2>
+                <strong>Precio base:</strong> {baseprice} <br></br>
+                <strong>Impuestos:</strong> {iva} <br></br>
+                <strong>Precio total:</strong> {totalprice} <br></br>
+                <div className="sendButton"  onClick={()=> navegador()}>Comprar</div>
             </div>
         </div>
     )
