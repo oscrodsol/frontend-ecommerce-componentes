@@ -16,13 +16,14 @@ const Cart = props => {
             <h1>Carrito</h1>
 
             <div className="carrito">
+                <TotalPrice data={cart} btn="0"/>
                 {
                     cart?.map((product, index) => (
                         <ProductCard key={index} data={product} btn="0" />
                     ))
                     
                 }
-                <TotalPrice data={cart} btn="0"/>
+                
             </div>
             {props.btn != '0' &&
                 <button className="addBtn" onClick={() => { dispatch(removeFromCart()) }}>Limpiar carrito</button>
