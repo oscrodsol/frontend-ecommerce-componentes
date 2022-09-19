@@ -53,39 +53,51 @@ const Profile = (props) => {
             })
     }, [])
 
-    const userModify = () => async (req, res) => {
+        const userModify = (event) => {
 
-        if (modify.password.length > 3) {
-            if (! /[\d()+-]/g.test(modify.password)) {
+            if (modify.password.length > 3) {
+                if (! /[\d()+-]/g.test(modify.password)) {
+                    setModify({
+                        ...modify,
+                        isError: true,
+                        message: 'Introduce un password válido'
+                    });
+                    return;
+                };
+    
+            } else {
                 setModify({
                     ...modify,
                     isError: true,
-                    message: 'Introduce un password válido'
+                    message: 'El password debe de tener como mínimo 4 caracteres'
                 });
                 return;
-            };
-
-        } else {
+            }
+    
             setModify({
                 ...modify,
-                isError: true,
-                message: 'El password debe de tener como mínimo 4 caracteres'
+                isError: false,
+                errorMsg: ''
             });
-            return;
-        }
 
-        setModify({
-            ...modify,
-            isError: false,
-            errorMsg: ''
-        });
+            if (modify.nick == '') {
+                modify.nick = user.nick;
+            }
+            if (modify.name == '') {
+                modify.name = user.name;
+            }
+            if (modify.surname == '') {
+                modify.surname = user.surname;
+            }
+            if (modify.password == '') {
+                modify.password = user.password;
+            }
+            if (modify.phone == '') {
+                modify.phone = user.phone;
+            }
+    
+            dispatch(modifyUser(token.token, modify.nick, modify.name, modify.surname, modify.password, modify.phone))
 
-        await axios.put('http://127.0.0.1:8000/api/modify', { nick: modify.nick, name: modify.name, surname: modify.surname, password: modify.password, phone: modify.phone }, config).then(res => {
-            setMsg({
-                txt: 'Usuario actualizado correctamente'
-            })}).catch(err => {
-            console.log(err)
-        });
     }
 
     return (

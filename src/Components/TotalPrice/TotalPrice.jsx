@@ -10,11 +10,11 @@ const TotalPrice = props => {
 
     let totalprice = 0;
 
-/*     for (let index = 0; index <= props.data.length; index++) {
+    for (let index = 0; index < props.data.length; index++) {
         totalprice += parseFloat(props.data[index].price);
         console.log(totalprice);
         console.log(props.data[index].price);
-    } */
+    }
 
     return (
         <div className="TotalPrice">
