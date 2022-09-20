@@ -1,4 +1,7 @@
 import './App.css'
+import {useSelector} from 'react-redux'
+import {userSelector} from "../src/Containers/User/userSlice"
+import {Navigate} from 'react-router-dom'
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Header from "./Components/Header/Header"
 import Home from './Containers/Home/Home'
@@ -11,6 +14,8 @@ import Cart from "./Containers/ShoppingCart/ShoppingCart"
 
 function App() {
 
+  const credentials = useSelector(userSelector);
+
   return (
     <div className="App">
       <BrowserRouter>
@@ -19,7 +24,7 @@ function App() {
                   <Route path="/" element={<Home/>}/>
                   <Route path="/register" element={<Register/>}/>
                   <Route path="/login" element={<Login/>}/>
-                  <Route path="/profile" element={<Profile/>}/>
+                  <Route path="/profile" element={ credentials.token ? (<Profile/>): (<Navigate to="/login"/>)}/>
                   <Route path="/logout" element={<Logout/>}/>
                   <Route path="/shopping_cart" element={<Cart/>}/>
               </Routes>
