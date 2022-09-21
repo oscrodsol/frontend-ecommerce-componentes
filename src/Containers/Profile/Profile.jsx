@@ -8,10 +8,10 @@ import axios from "axios"
 
 const Profile = (props) => {
 
-    let [user, setUser] = useState([])
     const token = useSelector(userSelector);
     const navegador = useNavigate()
     const dispatch = useDispatch();
+    const credentials = useSelector(userSelector);
 
     const [modify, setModify] = useState({
         nick: '',
@@ -44,15 +44,7 @@ const Profile = (props) => {
             "Authorization": `Bearer ${token.token}`
         }
     }
-    useEffect(() => {
-        axios.get('http://127.0.0.1:8000/api/profile', config)
-            .then(resp => {
-                setUser(
-                    resp.data
-                )
-            })
-    }, [])
-
+        
         const userModify = (event) => {
 
             if (modify.password.length > 3) {
@@ -81,41 +73,42 @@ const Profile = (props) => {
             });
 
             if (modify.nick == '') {
-                modify.nick = user.nick;
+                modify.nick = credentials.user.nick;
             }
             if (modify.name == '') {
-                modify.name = user.name;
+                modify.name = credentials.user.name;
             }
             if (modify.surname == '') {
-                modify.surname = user.surname;
+                modify.surname = credentials.user.surname;
             }
             if (modify.password == '') {
-                modify.password = user.password;
+                modify.password = credentials.user.password;
             }
             if (modify.phone == '') {
-                modify.phone = user.phone;
+                modify.phone = credentials.user.phone;
             }
     
             dispatch(modifyUser(token.token, modify.nick, modify.name, modify.surname, modify.password, modify.phone))
 
     }
+    
 
     return (
         <div className="profile">
             <h1>Mis datos</h1>
             <div className="cuenta">
                 Nick:<br></br>
-                <input className="input" type='nick' name='nick' title='nick' placeholder={user.nick} onChange={handleInput} /><br></br>
+                <input className="input" type='nick' name='nick' title='nick' placeholder={credentials.user.nick} onChange={handleInput} /><br></br>
                 Nombre:<br></br>
-                <input className="input" type='name' name='name' title='name' placeholder={user.name} onChange={handleInput} /><br></br>
+                <input className="input" type='name' name='name' title='name' placeholder={credentials.user.name} onChange={handleInput} /><br></br>
                 Apellidos:<br></br>
-                <input className="input" type='surname' name='surname' title='surname' placeholder={user.surname} onChange={handleInput} /><br></br>
+                <input className="input" type='surname' name='surname' title='surname' placeholder={credentials.user.surname} onChange={handleInput} /><br></br>
                 E-mail: Por razones de seguridad este campo es inmutable ;)<br></br>
-                <input className="input" type='email' name='email' title='email' value={user.email} /><br></br>
+                <input className="input" type='email' name='email' title='email' value={credentials.user.email} /><br></br>
                 Reestablecer contraseña:<br></br>
                 <input className="input" type='password' name='password' title='password' placeholder='Introduce aqui tu nueva contraseña' onChange={handleInput} /><br></br>
                 Telefono:<br></br>
-                <input className="input" type='phone' name='phone' title='phone' placeholder={user.phone} onChange={handleInput} /><br></br>
+                <input className="input" type='phone' name='phone' title='phone' placeholder={credentials.user.phone} onChange={handleInput} /><br></br>
                 <div className="sendButton" onClick={() => userModify()}>Guardar cambios</div><br></br>
             </div>
             <h2>Mis direcciones</h2>

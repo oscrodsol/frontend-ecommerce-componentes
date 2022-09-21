@@ -115,7 +115,6 @@ export const userProfile = (token) => async (dispatch) => {
         const user = await axios.get("http://localhost:8000/api/profile",config)
         dispatch(profile({
             ...user.data
-            
         }))
     } catch (error) {
         dispatch(logError(error));

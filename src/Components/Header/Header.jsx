@@ -9,6 +9,7 @@ const Header = () => {
 
     const dispatch = useDispatch();
     const credentials = useSelector(userSelector);
+    console.log(credentials);
 
     useEffect(() => {
         dispatch(userProfile(credentials.token))
@@ -50,7 +51,7 @@ const Header = () => {
                 </div>
                 <div className="personal">
                     <div>
-                        <NavLink className="navlink" to="/logout">Bienvenido {credentials.nick}</NavLink>
+                        <NavLink className="navlink" to="/profile">Bienvenido {credentials.user.nick}</NavLink>
                     </div>
                     <div>
                         <NavLink className="navlink" to="/shopping_cart">Carrito</NavLink>
