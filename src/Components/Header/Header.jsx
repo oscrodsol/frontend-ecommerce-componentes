@@ -51,7 +51,7 @@ const Header = () => {
                 </div>
                 <div className="personal">
                     <div>
-                        <NavLink className="navlink" to="/profile">Bienvenido {credentials.user.nick}</NavLink>
+                        <NavLink className="navlink" to="/profile">Bienvenido {credentials.user?.nick}</NavLink>
                     </div>
                     <div>
                         <NavLink className="navlink" to="/shopping_cart">Carrito</NavLink>
