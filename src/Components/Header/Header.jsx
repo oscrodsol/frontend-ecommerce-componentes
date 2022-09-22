@@ -15,6 +15,9 @@ const Header = () => {
         dispatch(userProfile(credentials.token))
 
     }, [credentials.token])
+
+    let tester = false;
+
     if (!credentials?.token) {
         return (
             <div className="header">

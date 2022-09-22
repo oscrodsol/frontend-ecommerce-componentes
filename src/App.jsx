@@ -9,6 +9,7 @@ import Register from "./Containers/User/Register/Register"
 import Login from "./Containers/User/Login/Login"
 import Footer from "./Components/Footer/Footer"
 import Profile from "./Containers/Profile/Profile"
+import Admin from "./Containers/Admin/Admin"
 
 import Cart from "./Containers/ShoppingCart/ShoppingCart"
 
@@ -26,6 +27,7 @@ function App() {
                   <Route path="/login" element={<Login/>}/>
                   <Route path="/profile" element={ credentials.token ? (<Profile/>): (<Navigate to="/login"/>)}/>
                   <Route path="/shopping_cart" element={<Cart/>}/>
+                  <Route path="/admin" element={<Admin/>}/>
               </Routes>
             <Footer/>
       </BrowserRouter>

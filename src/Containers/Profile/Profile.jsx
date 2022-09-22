@@ -96,6 +96,7 @@ const Profile = (props) => {
     return (
         <div className="profile">
             <h1>Mis datos</h1>
+            <div className="sendButton" onClick={() => navegador("/admin")}>ADMINISTRADOR</div><br></br>
             <div className="cuenta">
                 Nick:<br></br>
                 <input className="input" type='nick' name='nick' title='nick' placeholder={credentials.user.nick} onChange={handleInput} /><br></br>
