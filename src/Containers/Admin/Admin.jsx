@@ -30,7 +30,7 @@ const Admin = (props) => {
     /* console.log(components) */
     return (
         <div className="admin">
-            <h1>Hola :)</h1>
+            <h1>Panel Administrador de Usuarios</h1>
             <div className="users">
                 {
                     users.data?.map((users, index) => (

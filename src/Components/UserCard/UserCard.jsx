@@ -52,10 +52,10 @@ const UserCard = props => {
                 <strong>{status}</strong><br></br>
             </div>
             <div className="adminButtons">
-                <div className="modifyButton" onClick={() => navegador("/admin")}>Modificar Usuario</div><br></br>
-                <div className="modifyButton" onClick={() => navegador("/admin")}>Añadir / Eliminar roles</div><br></br>
-                <div className="modifyButton" onClick={() => navegador("/admin")}>Ver pedidos</div><br></br>
-                <div className="modifyButton" onClick={() => navegador("/admin")}>Activar / Desactivar cuenta Usuario</div><br></br>
+                <div className="modifyButton" onClick={() => confirm("Esto aun no hace nada ;)")}>Modificar Usuario</div><br></br>
+                <div className="modifyButton" onClick={() => confirm("Esto aun no hace nada ;)")}>Añadir / Eliminar roles</div><br></br>
+                <div className="modifyButton" onClick={() => confirm("Esto aun no hace nada ;)")}>Ver pedidos</div><br></br>
+                <div className="modifyButton" onClick={() => confirm("Esto aun no hace nada ;)")}>Activar / Desactivar cuenta Usuario</div><br></br>
                 <div className="deleteUserButton" onClick={() =>{deleteUser()}}><strong>Borrar Usuario</strong></div><br></br>
             </div>
         </div>

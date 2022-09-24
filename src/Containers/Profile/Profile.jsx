@@ -116,12 +116,12 @@ const Profile = (props) => {
             <h2>Mis direcciones</h2>
             <div className="direcciones">
                 <p>Aun no tienes direcciones</p><br></br>
-                <div className="sendButton">Añadir direccion</div><br></br>
+                <div className="sendButton" onClick={() => confirm("Esto aun no hace nada ;)")}>Añadir direccion</div><br></br>
             </div>
             <h2>Datos de facturacion</h2>
             <div className="facturacion">
                 <p>Aun no tienes direcciones</p><br></br>
-                <div className="sendButton">Añadir direccion</div><br></br>
+                <div className="sendButton" onClick={() => confirm("Esto aun no hace nada ;)")}>Añadir direccion</div><br></br>
             </div>
             <h2>Mis pedidos</h2>
             <div className="pedidos">

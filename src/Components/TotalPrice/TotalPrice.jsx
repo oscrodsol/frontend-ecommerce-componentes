@@ -24,7 +24,7 @@ const TotalPrice = props => {
                 <strong>Precio base:</strong> {baseprice} <br></br>
                 <strong>Impuestos:</strong> {iva} <br></br>
                 <strong>Precio total:</strong> {totalprice} <br></br>
-                <div className="totalButton"  onClick={()=> navegador()}>Comprar</div>
+                <div className="totalButton"  onClick={()=> confirm("Esto aun no hace nada ;)")}>Comprar</div>
             </div>
         </div>
     )
