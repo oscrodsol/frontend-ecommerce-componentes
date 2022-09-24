@@ -111,7 +111,7 @@ const Profile = (props) => {
                 <input className="input" type='password' name='password' title='password' placeholder='Introduce aqui tu nueva contraseña' onChange={handleInput} /><br></br>
                 Telefono:<br></br>
                 <input className="input" type='phone' name='phone' title='phone' placeholder={credentials.user.phone} onChange={handleInput} /><br></br>
-                <div className="sendButton" onClick={() => userModify()}>Guardar cambios</div><br></br>
+                <div className="sendButton" onClick={() => {userModify()}}>Guardar cambios</div><br></br>
             </div>
             <h2>Mis direcciones</h2>
             <div className="direcciones">

@@ -34,6 +34,13 @@ const UserCard = props => {
                 <strong>{props.data.updated_at}</strong><br></br>
                 <strong>{status}</strong><br></br>
             </div>
+            <div className="adminButtons">
+                <div className="modifyButton" onClick={() => navegador("/admin")}>Modificar Usuario</div><br></br>
+                <div className="modifyButton" onClick={() => navegador("/admin")}>Añadir / Eliminar roles</div><br></br>
+                <div className="modifyButton" onClick={() => navegador("/admin")}>Ver pedidos</div><br></br>
+                <div className="modifyButton" onClick={() => navegador("/admin")}>Activar / Desactivar cuenta Usuario</div><br></br>
+                <div className="deleteUserButton" onClick={() => navegador("/admin")}><strong>Borrar Usuario</strong></div><br></br>
+            </div>
         </div>
     )
 }

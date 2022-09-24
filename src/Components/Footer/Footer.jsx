@@ -9,7 +9,7 @@ const Footer = props => {
             <div>
             </div>
             <div>
-            HOLA SOY EL FOOTER
+            E-COMMERCE COMPONENTES
             </div>
             
         </div>
