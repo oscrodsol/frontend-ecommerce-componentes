@@ -8,18 +8,18 @@
     border: solid black 0.1em;
 }
 
-/* .user{
-    justify-content: space-between;
-} */
 .userImage{
-/*     margin-left: -10em; */
     height: 15em;
     width: 15em;
     border: solid black 0.1em;
 }
 
 .userTitles {
-/*     margin-left: -25em; */
+    display: flex;
+    flex-direction: column;
+    align-items:flex-start
+}
+.userData {
     display: flex;
     flex-direction: column;
     align-items:flex-start

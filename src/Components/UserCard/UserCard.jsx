@@ -40,16 +40,16 @@ const UserCard = props => {
                 <strong>Estado de la cuenta:</strong>
             </div>
             <div className="userData">
-                <strong>{props.data.id}</strong><br></br>
-                <strong>{props.data.nick}</strong><br></br>
-                <strong>{props.data.name}</strong><br></br>
-                <strong>{props.data.surname}</strong><br></br>
-                <strong>{props.data.email}</strong><br></br>
-                <strong>{props.data.phone}</strong><br></br>
-                <strong>{props.data.birth_date}</strong><br></br>
-                <strong>{props.data.created_at}</strong><br></br>
-                <strong>{props.data.updated_at}</strong><br></br>
-                <strong>{status}</strong><br></br>
+                <strong>{props.data.id}</strong>
+                <strong>{props.data.nick}</strong>
+                <strong>{props.data.name}</strong>
+                <strong>{props.data.surname}</strong>
+                <strong>{props.data.email}</strong>
+                <strong>{props.data.phone}</strong>
+                <strong>{props.data.birth_date}</strong>
+                <strong>{props.data.created_at}</strong>
+                <strong>{props.data.updated_at}</strong>
+                <strong>{status}</strong>
             </div>
             <div className="adminButtons">
                 <div className="modifyButton" onClick={() => confirm("Esto aun no hace nada ;)")}>Modificar Usuario</div><br></br>
