@@ -1,11 +1,28 @@
 import React from "react";
 import './UserCard.scss'
+import axios from "axios"
+import { useSelector} from 'react-redux'
+import { userSelector} from "../../Containers/User/userSlice"
 
 const UserCard = props => {
 
     let status = '';
 
-    props.data.status == 1 ? (status = 'Activo'): (status = 'Desactivado')
+    props.data.status == 1 ? (status = 'Activo'): (status = 'Desactivado');
+
+    const credentials = useSelector(userSelector);
+
+    const config = {
+        headers: {"Authorization": `Bearer ${credentials.token}`}
+    }
+
+    const deleteUser = () => {
+        try {
+            axios.delete(`http://127.0.0.1:8000/api/delete_user_by_id/${props.data.id}`, config);
+        } catch (error) {
+            console.log(error)
+        }
+    };  
 
     return (
         <div className="UserCard">
@@ -39,7 +56,7 @@ const UserCard = props => {
                 <div className="modifyButton" onClick={() => navegador("/admin")}>Añadir / Eliminar roles</div><br></br>
                 <div className="modifyButton" onClick={() => navegador("/admin")}>Ver pedidos</div><br></br>
                 <div className="modifyButton" onClick={() => navegador("/admin")}>Activar / Desactivar cuenta Usuario</div><br></br>
-                <div className="deleteUserButton" onClick={() => navegador("/admin")}><strong>Borrar Usuario</strong></div><br></br>
+                <div className="deleteUserButton" onClick={() =>{deleteUser()}}><strong>Borrar Usuario</strong></div><br></br>
             </div>
         </div>
     )
