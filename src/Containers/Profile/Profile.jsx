@@ -96,6 +96,7 @@ const Profile = (props) => {
     return (
         <div className="profile">
             <h1>Mis datos</h1>
+            <img className="profileImage" src={credentials.user.image}></img>
             <div className="sendButton" onClick={() => navegador("/admin")}>ADMINISTRADOR</div><br></br>
             <div className="cuenta">
                 Nick:<br></br>
