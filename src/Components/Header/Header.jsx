@@ -9,7 +9,6 @@ const Header = () => {
 
     const dispatch = useDispatch();
     const credentials = useSelector(userSelector);
-    console.log(credentials);
 
     useEffect(() => {
         dispatch(userProfile(credentials.token))

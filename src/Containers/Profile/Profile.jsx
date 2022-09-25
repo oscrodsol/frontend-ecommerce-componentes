@@ -91,53 +91,100 @@ const Profile = (props) => {
             dispatch(modifyUser(token.token, modify.nick, modify.name, modify.surname, modify.password, modify.phone))
 
     }
+
+    if (credentials.roles[0].role_id == 2 || credentials.roles[0].role_id == 3) {
+        return (
+            <div className="profile">
+                <h1>Mis datos</h1>
+                <img className="profileImage" src={credentials.user.image}></img>
+                <div className="sendButton" onClick={() => navegador("/admin")}>ADMINISTRADOR</div><br></br>
+                <div className="cuenta">
+                    Nick:<br></br>
+                    <input className="input" type='nick' name='nick' title='nick' placeholder={credentials.user.nick} onChange={handleInput} /><br></br>
+                    Nombre:<br></br>
+                    <input className="input" type='name' name='name' title='name' placeholder={credentials.user.name} onChange={handleInput} /><br></br>
+                    Apellidos:<br></br>
+                    <input className="input" type='surname' name='surname' title='surname' placeholder={credentials.user.surname} onChange={handleInput} /><br></br>
+                    E-mail: Por razones de seguridad este campo es inmutable ;)<br></br>
+                    <input className="input" type='email' name='email' title='email' value={credentials.user.email} /><br></br>
+                    Reestablecer contraseña:<br></br>
+                    <input className="input" type='password' name='password' title='password' placeholder='Introduce aqui tu nueva contraseña' onChange={handleInput} /><br></br>
+                    Telefono:<br></br>
+                    <input className="input" type='phone' name='phone' title='phone' placeholder={credentials.user.phone} onChange={handleInput} /><br></br>
+                    <div className="sendButton" onClick={() => {userModify()}}>Guardar cambios</div><br></br>
+                </div>
+                <h2>Mis direcciones</h2>
+                <div className="direcciones">
+                    <p>Aun no tienes direcciones</p><br></br>
+                    <div className="sendButton" onClick={() => confirm("Esto aun no hace nada ;)")}>Añadir direccion</div><br></br>
+                </div>
+                <h2>Datos de facturacion</h2>
+                <div className="facturacion">
+                    <p>Aun no tienes direcciones</p><br></br>
+                    <div className="sendButton" onClick={() => confirm("Esto aun no hace nada ;)")}>Añadir direccion</div><br></br>
+                </div>
+                <h2>Mis pedidos</h2>
+                <div className="pedidos">
+                    <p>No hay pedidos en curso</p><br></br>
+                </div>
     
-
-    return (
-        <div className="profile">
-            <h1>Mis datos</h1>
-            <img className="profileImage" src={credentials.user.image}></img>
-            <div className="sendButton" onClick={() => navegador("/admin")}>ADMINISTRADOR</div><br></br>
-            <div className="cuenta">
-                Nick:<br></br>
-                <input className="input" type='nick' name='nick' title='nick' placeholder={credentials.user.nick} onChange={handleInput} /><br></br>
-                Nombre:<br></br>
-                <input className="input" type='name' name='name' title='name' placeholder={credentials.user.name} onChange={handleInput} /><br></br>
-                Apellidos:<br></br>
-                <input className="input" type='surname' name='surname' title='surname' placeholder={credentials.user.surname} onChange={handleInput} /><br></br>
-                E-mail: Por razones de seguridad este campo es inmutable ;)<br></br>
-                <input className="input" type='email' name='email' title='email' value={credentials.user.email} /><br></br>
-                Reestablecer contraseña:<br></br>
-                <input className="input" type='password' name='password' title='password' placeholder='Introduce aqui tu nueva contraseña' onChange={handleInput} /><br></br>
-                Telefono:<br></br>
-                <input className="input" type='phone' name='phone' title='phone' placeholder={credentials.user.phone} onChange={handleInput} /><br></br>
-                <div className="sendButton" onClick={() => {userModify()}}>Guardar cambios</div><br></br>
+                {<div>
+                    <div className="sendButton" id='logout' onClick={() => {
+                        delLog()
+                        dispatch(logOut())
+                        localStorage.clear()
+                        navegador("/")
+                    }}>Logout</div><br></br>
+                </div>}
             </div>
-            <h2>Mis direcciones</h2>
-            <div className="direcciones">
-                <p>Aun no tienes direcciones</p><br></br>
-                <div className="sendButton" onClick={() => confirm("Esto aun no hace nada ;)")}>Añadir direccion</div><br></br>
+        )
+    } else {
+        return (
+            <div className="profile">
+                <h1>Mis datos</h1>
+                <img className="profileImage" src={credentials.user.image}></img>
+                <div className="cuenta">
+                    Nick:<br></br>
+                    <input className="input" type='nick' name='nick' title='nick' placeholder={credentials.user.nick} onChange={handleInput} /><br></br>
+                    Nombre:<br></br>
+                    <input className="input" type='name' name='name' title='name' placeholder={credentials.user.name} onChange={handleInput} /><br></br>
+                    Apellidos:<br></br>
+                    <input className="input" type='surname' name='surname' title='surname' placeholder={credentials.user.surname} onChange={handleInput} /><br></br>
+                    E-mail: Por razones de seguridad este campo es inmutable ;)<br></br>
+                    <input className="input" type='email' name='email' title='email' value={credentials.user.email} /><br></br>
+                    Reestablecer contraseña:<br></br>
+                    <input className="input" type='password' name='password' title='password' placeholder='Introduce aqui tu nueva contraseña' onChange={handleInput} /><br></br>
+                    Telefono:<br></br>
+                    <input className="input" type='phone' name='phone' title='phone' placeholder={credentials.user.phone} onChange={handleInput} /><br></br>
+                    <div className="sendButton" onClick={() => {userModify()}}>Guardar cambios</div><br></br>
+                </div>
+                <h2>Mis direcciones</h2>
+                <div className="direcciones">
+                    <p>Aun no tienes direcciones</p><br></br>
+                    <div className="sendButton" onClick={() => confirm("Esto aun no hace nada ;)")}>Añadir direccion</div><br></br>
+                </div>
+                <h2>Datos de facturacion</h2>
+                <div className="facturacion">
+                    <p>Aun no tienes direcciones</p><br></br>
+                    <div className="sendButton" onClick={() => confirm("Esto aun no hace nada ;)")}>Añadir direccion</div><br></br>
+                </div>
+                <h2>Mis pedidos</h2>
+                <div className="pedidos">
+                    <p>No hay pedidos en curso</p><br></br>
+                </div>
+    
+                {<div>
+                    <div className="sendButton" id='logout' onClick={() => {
+                        delLog()
+                        dispatch(logOut())
+                        localStorage.clear()
+                        navegador("/")
+                    }}>Logout</div><br></br>
+                </div>}
             </div>
-            <h2>Datos de facturacion</h2>
-            <div className="facturacion">
-                <p>Aun no tienes direcciones</p><br></br>
-                <div className="sendButton" onClick={() => confirm("Esto aun no hace nada ;)")}>Añadir direccion</div><br></br>
-            </div>
-            <h2>Mis pedidos</h2>
-            <div className="pedidos">
-                <p>No hay pedidos en curso</p><br></br>
-            </div>
-
-            {<div>
-                <div className="sendButton" id='logout' onClick={() => {
-                    delLog()
-                    dispatch(logOut())
-                    localStorage.clear()
-                    navegador("/")
-                }}>Logout</div><br></br>
-            </div>}
-        </div>
-    )
+        )
+    }
+    
 }
 
 export default Profile
