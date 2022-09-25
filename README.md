@@ -16,9 +16,31 @@ Proyecto final realizado para el Bootcamp Full Stack Developer de GeeksHubs, don
 
 El proyecto tiene su seguimiento en este trello: https://trello.com/b/aB0E6OIw/proyecto-final
 
-## Inicializar el proyecto y la base de datos:
+## Paginas de la web:
 
+### Inicio:
 
+![Inicio](https://user-images.githubusercontent.com/66917963/192162582-30bd6717-8073-45be-81a3-389e731feeda.png)
+
+### Iniciar Sesion:
+
+![Iniciar Sesion](https://user-images.githubusercontent.com/66917963/192162588-68cb72fc-b3a3-4238-9b8a-165c65daeeb4.png)
+
+### Registro:
+
+![registro](https://user-images.githubusercontent.com/66917963/192162590-d2331d4b-6604-429c-9ed8-a5881a36a264.png)
+
+### Perfil *El boton de administrador solo sale si entras con el administrador:
+
+![profile](https://user-images.githubusercontent.com/66917963/192162599-c0d81e7e-a182-4b26-a2aa-35f2f428c9e8.png)
+
+### Vista Administrador:
+
+![Administrador](https://user-images.githubusercontent.com/66917963/192162607-55b52e83-98f8-463c-accc-3ecd44bc409a.png)
+
+### Carrito:
+
+![carrito](https://user-images.githubusercontent.com/66917963/192162608-691fd5fe-54ce-4f86-a71f-0c795e424023.png)
 
 # Tareas pendientes:
   - [ ] Poder pedir los productos del carrito.
