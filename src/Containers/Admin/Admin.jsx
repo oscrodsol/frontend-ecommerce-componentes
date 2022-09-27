@@ -14,7 +14,7 @@ const Admin = (props) => {
         headers: { "Authorization": `Bearer ${credentials.token}` }
     }
 
-    let [users, setUsers] = useState([])
+    const [users, setUsers] = useState([])
     useEffect(() => {
         axios.get('http://127.0.0.1:8000/api/get_all_users', config)
             .then(resp => {

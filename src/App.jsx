@@ -17,13 +17,13 @@ function App() {
 
   const credentials = useSelector(userSelector);
 
-/*   let testRole = () => {
+  let testRole = () => {
     if (credentials.roles[0]?.role_id == 2 || credentials.roles[0]?.role_id == 3) {
-      tester = true;
+      return true;
     } else {
-      tester = false;
+      return false;
     }
-  }; */
+  };
 
   return (
     <div className="App">

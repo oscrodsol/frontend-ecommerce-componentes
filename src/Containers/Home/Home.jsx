@@ -10,7 +10,7 @@ import { addProducts, selectProducts } from './homeSlice'
 const Home = (props) => {
     const dispatch = useDispatch()
 
-    let [components, setComponents] = useState([])
+    const [components, setComponents] = useState([])
 
     useEffect(() => {
         dispatch(addProducts([

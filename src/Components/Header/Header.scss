@@ -15,10 +15,13 @@
 .searchbar{
     justify-content:end;
     align-items: flex-end;
-    width: 35em;
-    height: 2em;
-    background-color: rgb(104, 57, 57);
-    margin-right: 10em;
+    width: 40em;
+    height: 2.5em;
+    background-color: white;
+    margin-right: 25em;
+    border-radius: 0.5em;
+    color: black;
+    font-weight: bold;
 }
 .personal{
     display: flex;
