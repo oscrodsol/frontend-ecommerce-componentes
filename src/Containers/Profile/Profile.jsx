@@ -8,7 +8,6 @@ import axios from "axios"
 
 const Profile = (props) => {
 
-    const token = useSelector(userSelector);
     const navegador = useNavigate()
     const dispatch = useDispatch();
     const credentials = useSelector(userSelector);
@@ -41,7 +40,7 @@ const Profile = (props) => {
 
     const config = {
         headers: {
-            "Authorization": `Bearer ${token.token}`
+            "Authorization": `Bearer ${credentials.token}`
         }
     }
         
@@ -88,7 +87,7 @@ const Profile = (props) => {
                 modify.phone = credentials.user.phone;
             }
     
-            dispatch(modifyUser(token.token, modify.nick, modify.name, modify.surname, modify.password, modify.phone))
+            dispatch(modifyUser(credentials.token, modify.nick, modify.name, modify.surname, modify.password, modify.phone))
 
     }
 

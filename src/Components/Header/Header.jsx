@@ -26,7 +26,7 @@ const Header = () => {
                         <NavLink className="navlink" to="/">Inicio</NavLink>
                     </div>
                     <div className="searchbar">
-                        <NavLink className="navlink" to="/login">Busqueda</NavLink>
+                        <input className="searchbar" type="text" name="search" placeholder="Busqueda"/>
                     </div>
                 </div>
 
@@ -47,7 +47,9 @@ const Header = () => {
                     <div>
                         <NavLink className="navlink" to="/">Inicio</NavLink>
                     </div>
-                    <input className="searchbar" type="text" name="search" placeholder="Busqueda"/>
+                    <div className="searchbar">
+                        <input className="searchbar" type="text" name="search" placeholder="Busqueda"/>
+                    </div>
                 </div>
 
                 <div className="personal">

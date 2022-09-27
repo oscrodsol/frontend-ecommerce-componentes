@@ -14,6 +14,8 @@ const TotalPrice = props => {
         baseprice += parseFloat(props.data[index].price);
     }
 
+    baseprice = (Math.floor((baseprice/100) * 100) / 100);
+
     let iva = (Math.floor(((21*baseprice)/100) * 100) / 100);
     let totalprice = (Math.floor((baseprice + iva) * 100) / 100);
 
